@@ -1,9 +1,14 @@
 from django.contrib import admin
 from .models import Curso, Alumno, Instructor
 
-admin.site.register(Curso)
-admin.site.register(Alumno)
-admin.site.register(Instructor)
+
+class filtroAlumnos(admin.ModelAdmin):
+    filter_horizontal = ("alumnos",)
+
+
+# admin.site.register(Curso, filtroAlumnos)
+# admin.site.register(Alumno)
+# admin.site.register(Instructor)
 
 
 # Register your models here.

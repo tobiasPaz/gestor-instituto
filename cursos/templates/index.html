@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="{% static 'CSS/index.css' %}"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Cursos</h1>
+    </header>
+    <div class="container">
+      <table>
+        <thead>
+          <th>Curso</th>
+          <th>Horario</th>
+          <th>Dias</th>
+          <th>Fecha de inicio</th>
+          <th>Fecha de finalizacion</th>
+          <th>instructor</th>
+          <th>Alumnos</th>
+          <th>Acciones</th>
+        </thead>
+        <tbody>
+          {% for c in cursos %}
+          <tr>
+            <td>{{ c.name }}</td>
+            <td>{{ c.horario }}</td>
+            <td>{{ c.dias }}</td>
+            <td>{{ c.fechaInicio }}</td>
+            <td>{{ c.fechaFinalizacion }}</td>
+            <td>{{ c.instructor }}</td>
+            <td>{{ c.alumnos.all | length }}</td>
+            <td>
+              <a href="/cursos/{{ c.id }}"><button>Ver</button></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <script src="{% static 'Js/index.js' %}"></script>
+  </body>
+</html>
